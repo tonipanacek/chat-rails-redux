@@ -1,8 +1,8 @@
 require 'faker'
 
 Message.destroy_all
-Channel.destroy_all
 User.destroy_all
+Channel.destroy_all
 
 
 10.times {
@@ -14,19 +14,18 @@ User.destroy_all
 
 puts "#{User.count} created"
 
-general = Channel.create(name: 'General')
-berlin = Channel.create(name: 'Berlin')
-react = Channel.create(name: 'React')
-freelancers = Channel.create(name: 'Freelancers')
-lunch = Channel.create(name: 'Lunch')
+Channel.create(name: 'General')
+Channel.create(name: 'Berlin')
+Channel.create(name: 'React')
+Channel.create(name: 'Freelancers')
+Channel.create(name: 'Lunch')
 
-channels = [general, berlin, react, freelancers, lunch]
 
 puts "#{Channel.count} created"
 
 50.times {
   Message.create!(
-    content: Faker::Quotes::Shakespeare,
+    content: Faker::Quotes::Shakespeare.hamlet,
     user: User.all.shuffle.first,
     channel: Channel.all.shuffle.first
   )
