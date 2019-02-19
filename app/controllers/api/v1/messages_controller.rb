@@ -2,30 +2,20 @@ class Api::V1::MessagesController < ApplicationController
   before_action :set_channel
 
   def index
-    messages = Message.all
-    respond_to do |format|
-      format.json  do
-        render json: {
-          messages.map { |message|
-            id: message.id
-          }.to_json
-        }
-      end
-    end
+    messages = @channel.messages.order('created_at ASC')
+    render json: messages
   end
 
   def create
-    message = Message.create(message_params)
-    render json: message
+    message = @channel.messages.build(content: params[:content])
+    message.user = current_user
+    message.save
+    render json: message # see Message.as_json method
   end
 
   private
 
   def set_channel
-    channel = Channel.find_by(name: params[:name])
-  end
-
-  def message_params
-    params.require(:message).permit(:content, :user, :channel)
+    @channel = Channel.find_by(name: params[:channel_id])
   end
 end

@@ -14,11 +14,11 @@ Channel.destroy_all
 
 puts "#{User.count} created"
 
-Channel.create(name: 'General')
-Channel.create(name: 'Berlin')
-Channel.create(name: 'React')
-Channel.create(name: 'Freelancers')
-Channel.create(name: 'Lunch')
+Channel.create(name: 'general')
+Channel.create(name: 'berlin')
+Channel.create(name: 'react')
+Channel.create(name: 'freelancers')
+Channel.create(name: 'lunch')
 
 
 puts "#{Channel.count} created"
