@@ -1,0 +1,8 @@
+{
+  "name": "chat-rails-redux",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.4.0",
+    "jquery": "^3.3.1"
+  }
+}
