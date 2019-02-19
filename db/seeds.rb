@@ -6,8 +6,8 @@ User.destroy_all
 
 
 10.times {
-  User.create(
-    email: Faker::Name.unique.name,
+  User.create!(
+    email: Faker::Internet.email,
     password: 'password'
   )
 }
@@ -25,7 +25,7 @@ channels = [general, berlin, react, freelancers, lunch]
 puts "#{Channel.count} created"
 
 50.times {
-  Message.create(
+  Message.create!(
     content: Faker::Quotes::Shakespeare,
     user: User.all.shuffle.first,
     channel: Channel.all.shuffle.first
